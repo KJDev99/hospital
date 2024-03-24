@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <aside class="aside">
+        <a class="logo" href="index.html">
+          <img src="./assets/img/logo.svg" />
+        </a>
+        <div class="title">MEDICINE</div>
+        <nav class="nav"></nav>
+      </aside>
+      <div class="wrapper">
+        <header class="header">
+          <form class="search">
+            <img src="./assets/img/search.svg" />
+            <input type="text" placeholder="Qidiriuv" />
+          </form>
+          <div class="avatar"><img src="./assets/img/16.svg" /></div>
+        </header>
+        <div class="content">
+          <div class="box">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="title">Mutaxasisliklar</div>
+            </div>
+            <table class="table"></table>
+          </div>
+          <button class="add" onclick="openModal()">
+            <img src="./assets/img/doctors.svg" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <div class="modal_box">
+        <h3 class="text-center mb-20">Yangi Malumot qo'shish</h3>
+        <form id="specform">
+          <input
+            class="input"
+            type="text"
+            name="title"
+            placeholder="Mutaxassislik nomini yozing"
+          />
+        </form>
+        <div class="modal_footer mt-20">
+            <button onclick="openModal()" class="btn danger">Bekor qilish</button>
+            <button onclick="add()" class="btn success btn_add">Kiritish</button>
+            <button onclick="save()" class="btn success btn_edit hide">
+              Saqlash
+            </button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script>
+      let headers = [
+        {
+          name: "Nomi",
+          slug: "title",
+          func: (val) => val.toUpperCase(),
+        },
+        {
+          name: "Holati",
+          slug: "status",
+          type: "button",
+          func: (val) =>
+            val
+              ? `<button class="btn success">Faol</button>`
+              : `<button class="btn danger">Faol</button>`,
+        },
+      ];
+      let specs = new Layout("spec", "#specform", ".table", [], headers);
+      specs.all();
+      const add = () => specs.add();
+      const remove = (id) => specs.remove(id);
+      const edit = (id) => specs.edit(id);
+      const save = () => specs.save();
+    </script>
+  </body>
+</html>

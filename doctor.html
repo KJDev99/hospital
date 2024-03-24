@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <aside class="aside">
+        <a class="logo" href="index.html">
+          <img src="./assets/img/logo.svg" />
+        </a>
+        <div class="title">MEDICINE</div>
+        <nav class="nav"></nav>
+      </aside>
+      <div class="wrapper">
+        <header class="header">
+          <form class="search">
+            <img src="./assets/img/search.svg" />
+            <input type="text" placeholder="Qidiriuv" />
+          </form>
+          <div class="avatar"><img src="./assets/img/16.svg" /></div>
+        </header>
+        <div class="content">
+          <div class="box">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="title">Shifokorlar</div>
+            </div>
+            <table class="table"></table>
+          </div>
+          <button class="add" onclick="openModal()">
+            <img src="./assets/img/doctors.svg" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal">
+      <div class="modal_box">
+        <h4 class="text-center mb-20">Yangi shifokorni ro'yxatdan o'tkazish</h4>
+        <div class="step">1</div>
+        <h3 class="text-center mb-20 part">Shaxsiy ma`lumotlar</h3>
+        <form id="doctorform">
+            <div class="row" id="step_1">
+                <div class="col-6 col-sm-12">
+                    <label>Ism-sharfi</label>
+                    <input type="text" name="name" class="input mb-10">
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Tug'ulgan sanasi</label>
+                    <input type="date" name="birthday" class="input mb-10">
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Tug'ulgan viloyati</label>
+                    <select name="region" onchange="getDistrict(event)" class="input"></select>
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Tug'ulgan Shahar</label>
+                    <select name="district" class="input"></select>
+                </div>
+                <div class="col-12 col-sm-12">
+                    <label>Manzil</label>
+                    <input type="text" class="input" name="address">
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Oilaviy holati</label>
+                    <select name="family" class="input"></select>
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Ma'lumoti</label>
+                    <select name="education" class="input"></select>
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Telefon raqam</label>
+                    <input value="+998 " data-maska="+998 (##) ###-##-##"  type="text" name="phone" class="input">
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Oila a'zolaridan Telefon raqam</label>
+                    <input value="+998 " data-maska="+998 (##) ###-##-##" type="text" name="familyphone" class="input">
+                </div>
+            </div>
+            <div class="row" id="step_2" style="display: none;">
+                <div class="col-6 col-sm-12">
+                    <label>Mutaxassisligi</label>
+                    <select name="spec" class="input"></select>
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Faoliyat bo'limi</label>
+                    <select name="department" class="input"></select>
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Ish staji</label>
+                    <input type="text" class="input" name="exp">
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Ish grafigi</label>
+                    <select name="worktime" class="input"></select>
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Hafta kundagi grafigi</label>
+                    <div class="d-flex pt-10">
+                        <label class="mr-10">
+                            <input type="checkbox" name="weekdays" value="du"> Du
+                        </label>
+                        <label class="mr-10">
+                            <input type="checkbox" name="weekdays" value="se"> Se
+                        </label>
+                        <label class="mr-10">
+                            <input type="checkbox" name="weekdays" value="ch"> Ch
+                        </label>
+                        <label class="mr-10">
+                            <input type="checkbox" name="weekdays" value="pa"> Pa
+                        </label>
+                        <label class="mr-10">
+                            <input type="checkbox" name="weekdays" value="ju"> Ju
+                        </label>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-12">
+                    <label>Ishga kirgan sanasi</label>
+                    <input type="date" name="startTime" class="input">
+                </div>
+            </div>
+        </form>
+        <div class="modal_footer mt-20">
+            <button onclick="back()" class="btn danger">Bekor qilish</button>
+            <button onclick="next()" class="btn success btn_add">Keyingi bo'lim</button>
+            <button onclick="save()" class="btn success btn_edit hide">
+              Saqlash
+            </button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/maska@2/dist/maska.umd.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/place.js"></script>
+    <script src="./assets/js/doctor.js"></script>
+  </body>
+</html>
